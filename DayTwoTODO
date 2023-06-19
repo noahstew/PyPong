@@ -1,0 +1,86 @@
+# Initial setup
+import pygame
+import random
+
+pygame.init()
+pygame.font.init()
+
+# Window setup
+WINDOW_WIDTH = 1000
+WINDOW_HEIGHT = 600
+WINDOW_DIM = (WINDOW_WIDTH, WINDOW_HEIGHT)
+DISPLAY = pygame.display.set_mode(WINDOW_DIM)
+pygame.display.set_caption("PyPong")
+FPS = 60
+# ----------------------------------------------
+# Game Variables
+
+# Colors
+TENNIS_BALL = (210, 255, 28)
+NET = (192, 192, 192)
+COURT = (104, 204, 0)
+SCOREBOARD = (76, 153, 0)
+PLAYER_ONE = (204, 0, 0)
+PLAYER_TWO = (0, 51, 102)
+
+# Paddle
+PADDLE_INSET = 10  # how far in from edge of window the paddle will be
+PADDLE_WIDTH = 20
+PADDLE_HEIGHT = 60
+PADDLE_SPEED = 7
+
+# Ball
+BALL_SIZE = 10
+ball_speed_x = 5
+ball_speed_y = 4
+
+# Scoreboard
+left_score = 0
+right_score = 0
+scoreboard_font_size = 400
+scoreboard_font = pygame.font.SysFont("Arial", scoreboard_font_size)
+
+# Clock setup
+clock = pygame.time.Clock()
+# ----------------------------------------------
+# Gameplay Loop
+
+# Running loop begins
+running = True
+
+# Set initial position of paddles and ball
+left_paddle_y = (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2) # NEED
+right_paddle_y = (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2) # NEED
+
+ball_x_start = (WINDOW_WIDTH / 2) # NEED
+ball_y_start = (WINDOW_HEIGHT / 2) - (BALL_SIZE / 2) # NEED
+ball_x = ball_x_start # NEED
+ball_y = ball_y_start # NEED
+
+while running:
+
+    # Create paddle objects
+    left_paddle_rect = pygame.Rect(PADDLE_INSET, left_paddle_y, PADDLE_WIDTH, PADDLE_HEIGHT) # NEED
+    right_paddle_rect = pygame.Rect(WINDOW_WIDTH - PADDLE_INSET - PADDLE_WIDTH, right_paddle_y, PADDLE_WIDTH,
+                                    PADDLE_HEIGHT) # NEED
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # Display court backdrop
+    DISPLAY.fill(COURT)
+
+    # Draw all objects
+    pygame.draw.line(DISPLAY, NET, (WINDOW_WIDTH / 2, 0), (WINDOW_WIDTH / 2, WINDOW_HEIGHT), 6) # NEED
+
+    pygame.draw.rect(DISPLAY, PLAYER_ONE, left_paddle_rect) # NEED
+    pygame.draw.rect(DISPLAY, PLAYER_TWO, right_paddle_rect) # NEED
+    pygame.draw.circle(DISPLAY, TENNIS_BALL, (ball_x, ball_y), BALL_SIZE) # NEED
+
+    # ----------------------------------------------
+    # Closing program
+    clock.tick(FPS)
+    pygame.display.update()
+pygame.font.quit()
+pygame.quit()
