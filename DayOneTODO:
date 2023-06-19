@@ -1,0 +1,56 @@
+# Initial setup
+import pygame
+
+pygame.init()
+
+# Window setup (See what happens when you change width and height)
+WINDOW_WIDTH = 1000 # 3 NEED
+WINDOW_HEIGHT = 600 # 4 NEED
+WINDOW_DIM = (WINDOW_WIDTH, WINDOW_HEIGHT) # 2 NEED
+DISPLAY = pygame.display.set_mode(WINDOW_DIM) # 1 NEED
+pygame.display.set_caption("PyPong") # 5
+FPS = 60 # 6
+# ----------------------------------------------
+# Game Variables
+
+# Colors (Show RGB Color Code website to pick your colours)
+TENNIS_BALL = (210, 255, 28) 
+NET = (192, 192, 192)
+COURT = (104, 204, 0)
+SCOREBOARD = (76, 153, 0)
+PLAYER_ONE = (204, 0, 0)
+PLAYER_TWO = (0, 51, 102)
+
+# Paddle (Remember paddle is a rectangle)
+PADDLE_INSET = 10  # how far in from edge of window the paddle will be
+PADDLE_WIDTH = 20 # NINJA CHOICE (COME BACK)
+PADDLE_HEIGHT = 60 # NINJA CHOICE (COME BACK)
+PADDLE_SPEED = 7 # NINJA CHOICE (COME BACK)
+
+# Ball
+BALL_SIZE = 10 # NINJA CHOICE (COME BACK)
+ball_speed_x = 5 # NINJA CHOICE (COME BACK)
+ball_speed_y = 4 # NINJA CHOICE (COME BACK)
+
+# Clock setup
+clock = pygame.time.Clock() # NEED
+# ----------------------------------------------
+# Gameplay Loop
+
+# Running loop begins
+running = True
+
+while running:
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # Display court backdrop
+    DISPLAY.fill(COURT) 
+
+    # ----------------------------------------------
+    # Closing program
+    clock.tick(FPS)
+    pygame.display.update()
+pygame.quit()
