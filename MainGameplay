@@ -1,8 +1,8 @@
 # Initial setup
-import pygame
-import random
+import pygame 
+import random 
 
-pygame.init()
+pygame.init() 
 pygame.font.init()
 
 # Window setup
@@ -117,7 +117,7 @@ while running:
         left_score += 1
         ball_x = ball_x_start
         ball_y = ball_y_start
-        ball_speed_x = 7
+        ball_speed_x = -7
         ball_speed_y = random.randint(-7, 7)
         left_paddle_y = (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)
         right_paddle_y = (WINDOW_HEIGHT / 2) - (PADDLE_HEIGHT / 2)
